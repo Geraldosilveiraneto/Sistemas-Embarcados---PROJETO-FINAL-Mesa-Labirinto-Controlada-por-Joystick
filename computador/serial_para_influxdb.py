@@ -14,7 +14,7 @@ SERIAL_PORT     = "COM4"          # AJUSTE: porta onde o ESP32 esta conectado
 BAUD_RATE       = 115200
 
 INFLUX_HOST     = "http://localhost:8181"
-INFLUX_TOKEN = "apiv3_Vdno-gC3EJvlR0VwzJ1Zr7iB-STK4be7Ce3O5BeQ-_wJH3hnWJi8vnYxl1Agz8r_BElw9jELwJKw8uCxxrxy3g"
+INFLUX_TOKEN    = "apiv3_OBV2L4_CAJePk6luZvdylWh1ccd9aZTSvY0zVTUG-1R9DvXk7KMGb43JctKE8HdGyKrVBXnHvGKpBXeSwX0GWw"
 INFLUX_DATABASE = "mesa_labirinto"
 # ==================================================
 
@@ -50,12 +50,16 @@ def main():
                 .field("joy_y", int(dados["joy_y"]))
                 .field("servo1", int(dados["servo1"]))
                 .field("servo2", int(dados["servo2"]))
+                .field("tempo_partida", float(dados.get("tempo_partida", 0.0)))
+                .field("jogo_ativo", int(dados.get("jogo_ativo", 0)))
             )
 
             client.write(ponto)
 
+            status_jogo = "JOGANDO" if dados.get("jogo_ativo", 0) == 1 else "parado"
             print(f"Pitch: {dados['pitch']:+6.1f}  |  Roll: {dados['roll']:+6.1f}  "
-                  f"|  Servo1: {dados['servo1']:3d}  Servo2: {dados['servo2']:3d}")
+                  f"|  Servo1: {dados['servo1']:3d}  Servo2: {dados['servo2']:3d}  "
+                  f"|  Tempo: {dados.get('tempo_partida', 0.0):6.2f}s [{status_jogo}]")
 
         except json.JSONDecodeError:
             continue
