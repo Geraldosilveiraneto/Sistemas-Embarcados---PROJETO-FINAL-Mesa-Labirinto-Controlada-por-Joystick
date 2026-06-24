@@ -19,7 +19,7 @@ from influxdb_client_3 import InfluxDBClient3, Point
 
 # ================= CONFIGURACAO =================
 INFLUX_HOST     = "http://localhost:8181"
-INFLUX_TOKEN    = "apiv3_OBV2L4_CAJePk6luZvdylWh1ccd9aZTSvY0zVTUG-1R9DvXk7KMGb43JctKE8HdGyKrVBXnHvGKpBXeSwX0GWw"
+INFLUX_TOKEN    = "SEU_TOKEN"
 INFLUX_DATABASE = "mesa_labirinto"
 # ==================================================
 
