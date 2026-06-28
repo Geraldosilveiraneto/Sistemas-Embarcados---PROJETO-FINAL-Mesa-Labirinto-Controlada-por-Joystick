@@ -75,7 +75,7 @@
    Servo2 (GPIO41): fica reto em 81 graus -> offset = 81 - 90 = -9
    ========================================================= */
 #define SERVO1_OFFSET   0     // Servo 1 (GPIO42, eixo X) - sem desvio detectado
-#define SERVO2_OFFSET   -9    // Servo 2 (GPIO41, eixo Y) - corrige horn torto
+#define SERVO2_OFFSET   -10    // Servo 2 (GPIO41, eixo Y) - corrige horn torto
 
 /* =========================================================
    VARIAVEIS COMPARTILHADAS
